@@ -12,7 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class WizardController {
 
-    private WizardRepository repository = new WizardRepository();
+  /*  @Autowired
+    private final WizardRepository repository;*  with autowired*/
+
+    private final WizardRepository repository;
+
+    public WizardController (WizardRepository wizardRepositoryInjected){
+        this.repository = wizardRepositoryInjected;} // par constructeur
 
     @GetMapping("/wizards")
     public String getAll(Model model) {
